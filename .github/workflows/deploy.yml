@@ -22,9 +22,14 @@ jobs:
         run: npm install
 
       - name: Configure Git user identity
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "tanner.barlow.dev@gmail.com"
           git config --global user.name "Tanner Barlow"
 
       - name: Build and deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run deploy
+        
